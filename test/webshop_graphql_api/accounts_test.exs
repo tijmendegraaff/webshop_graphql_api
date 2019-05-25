@@ -92,4 +92,75 @@ defmodule WebshopGraphqlApi.AccountsTest do
       assert %Ecto.Changeset{} = Accounts.change_customer(customer)
     end
   end
+
+  describe "employees" do
+    alias WebshopGraphqlApi.Accounts.Employee
+
+    @valid_attrs %{date_of_birth: ~N[2010-04-17 14:00:00], email: "some email", first_name: "some first_name", last_name: "some last_name", password_hash: "some password_hash", phone_number: "some phone_number", role: "some role"}
+    @update_attrs %{date_of_birth: ~N[2011-05-18 15:01:01], email: "some updated email", first_name: "some updated first_name", last_name: "some updated last_name", password_hash: "some updated password_hash", phone_number: "some updated phone_number", role: "some updated role"}
+    @invalid_attrs %{date_of_birth: nil, email: nil, first_name: nil, last_name: nil, password_hash: nil, phone_number: nil, role: nil}
+
+    def employee_fixture(attrs \\ %{}) do
+      {:ok, employee} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Accounts.create_employee()
+
+      employee
+    end
+
+    test "list_employees/0 returns all employees" do
+      employee = employee_fixture()
+      assert Accounts.list_employees() == [employee]
+    end
+
+    test "get_employee!/1 returns the employee with given id" do
+      employee = employee_fixture()
+      assert Accounts.get_employee!(employee.id) == employee
+    end
+
+    test "create_employee/1 with valid data creates a employee" do
+      assert {:ok, %Employee{} = employee} = Accounts.create_employee(@valid_attrs)
+      assert employee.date_of_birth == ~N[2010-04-17 14:00:00]
+      assert employee.email == "some email"
+      assert employee.first_name == "some first_name"
+      assert employee.last_name == "some last_name"
+      assert employee.password_hash == "some password_hash"
+      assert employee.phone_number == "some phone_number"
+      assert employee.role == "some role"
+    end
+
+    test "create_employee/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Accounts.create_employee(@invalid_attrs)
+    end
+
+    test "update_employee/2 with valid data updates the employee" do
+      employee = employee_fixture()
+      assert {:ok, %Employee{} = employee} = Accounts.update_employee(employee, @update_attrs)
+      assert employee.date_of_birth == ~N[2011-05-18 15:01:01]
+      assert employee.email == "some updated email"
+      assert employee.first_name == "some updated first_name"
+      assert employee.last_name == "some updated last_name"
+      assert employee.password_hash == "some updated password_hash"
+      assert employee.phone_number == "some updated phone_number"
+      assert employee.role == "some updated role"
+    end
+
+    test "update_employee/2 with invalid data returns error changeset" do
+      employee = employee_fixture()
+      assert {:error, %Ecto.Changeset{}} = Accounts.update_employee(employee, @invalid_attrs)
+      assert employee == Accounts.get_employee!(employee.id)
+    end
+
+    test "delete_employee/1 deletes the employee" do
+      employee = employee_fixture()
+      assert {:ok, %Employee{}} = Accounts.delete_employee(employee)
+      assert_raise Ecto.NoResultsError, fn -> Accounts.get_employee!(employee.id) end
+    end
+
+    test "change_employee/1 returns a employee changeset" do
+      employee = employee_fixture()
+      assert %Ecto.Changeset{} = Accounts.change_employee(employee)
+    end
+  end
 end
