@@ -5,7 +5,19 @@ defmodule WebshopGraphqlApiWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api", WebshopGraphqlApiWeb do
+  scope "/api" do
     pipe_through :api
+
+    forward(
+      "/graphiql",
+      Absinthe.Plug.GraphiQL,
+      schema: WebshopGraphqlApiWeb.Schema
+    )
+
+    forward(
+      "/",
+      Absinthe.Plug,
+      schema: WebshopGraphqlApiWeb.Schema
+    )
   end
 end
