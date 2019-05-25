@@ -12,5 +12,7 @@ defmodule WebshopGraphqlApi.Repo.Migrations.CreateEmployees do
 
       timestamps()
     end
+
+    create unique_index(:employees, [:email])
   end
 end
