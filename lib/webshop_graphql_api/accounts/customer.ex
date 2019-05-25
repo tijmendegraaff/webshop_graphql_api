@@ -25,14 +25,15 @@ defmodule WebshopGraphqlApi.Accounts.Customer do
       :last_name,
       :email,
       :phone_number,
-      :password
+      :password,
+      :password_confirmation
     ])
     |> validate_required([
       :first_name,
       :last_name,
       :email,
-      :phone_number,
-      :password
+      :password,
+      :password_confirmation
     ])
     |> EmailValidator.validate_email(:email)
     |> update_change(:email, &String.downcase(&1))
