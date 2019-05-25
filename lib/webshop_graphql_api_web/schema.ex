@@ -11,4 +11,12 @@ defmodule WebshopGraphqlApiWeb.Schema do
       resolve(&Resolvers.CustomerResolver.customers/3)
     end
   end
+
+  mutation do
+    @desc "Create a new customer"
+    field :create_customer, :customer_type do
+      arg(:input, non_null(:customer_input_type))
+      resolve(&Resolvers.CustomerResolver.create_customer/3)
+    end
+  end
 end
