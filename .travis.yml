@@ -13,3 +13,10 @@ before_script:
   - mix do ecto.create, ecto.migrate
 script:
   - mix test
+deploy:
+  provider: heroku
+  api_key:
+    secure: FlWVeCYrFliSj0Zh1/qEA8QwdhwjH6rkgG7ziYjletu+1w+gZpOE4PpOPQFKFSuMoTTTgda2p9GoMjYhWv2MNILiXvsTgku5B7s4/0/a5/8yjoky7gqQlv2KR9lzdgR+DjJbFXlUhueRAtqCviADSXFuH7oRs3bWZPu8dffTjfv2tEVz+LAqL8yq0H5/gUy1pF6Fgy5fT3DPMVBWD9iQA41IRUjsNgdW/jKn9Du7oOM+qnV+phVl4qHYMdNLKBM/Li9RIpEK7FK83hhM0+m9TuRvaOsl2n4YOrRFAyqQv8T72ELyJLrVcLqwu0u16bLDb02AJGZI82TZP/r6sjCmi+GWQR2Xj86D820j7VvZ1UKOob+uKwvZtk6KYqoBp5jT4zF//me7oWMteeoctL0rQoGsOwyYJNexud6b4buYJAlVnf8bPYA2bXDR+DVROmyMkD9LZ0tkubWVzrUJKwJDRQMDBud/UQETMJWPKm8IOLs2gOcj1WAdi9MsOfbw/VGljxGIAau0ksxUEP1U71D/+7sketWpMgxS5fB243ZX4isV5jj2tNJSNoVCOFIXTfzCYbo+vxY/zaxgx9B7Tk5qQsEgfSvXGslZ59NN675vWKtdnKXfih3pIBMhF6G7R5tr1geS/eWtw8e4usSLpQUIuPscvMtv9OjEJQ/Ei/F9QGg=
+  app: webshop-graphql-api
+  on:
+    repo: tijmendegraaff/webshop_graphql_api

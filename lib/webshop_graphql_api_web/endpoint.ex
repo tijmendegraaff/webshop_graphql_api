@@ -2,7 +2,7 @@ defmodule WebshopGraphqlApiWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :webshop_graphql_api
 
   socket "/socket", WebshopGraphqlApiWeb.UserSocket,
-    websocket: true,
+    websocket: [timeout: 45_000],
     longpoll: false
 
   # Serve at "/" the static files from "priv/static" directory.
