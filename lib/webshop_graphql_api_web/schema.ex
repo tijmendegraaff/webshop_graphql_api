@@ -10,6 +10,11 @@ defmodule WebshopGraphqlApiWeb.Schema do
     field :customers, list_of(:customer_type) do
       resolve(&Resolvers.CustomerResolver.customers/3)
     end
+
+    @desc "Return all employees"
+    field :employees, list_of(:employee_type) do
+      resolve(&Resolvers.EmployeeResolver.employees/3)
+    end
   end
 
   mutation do
