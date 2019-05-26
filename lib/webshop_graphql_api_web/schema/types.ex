@@ -7,4 +7,5 @@ defmodule WebshopGraphqlApiWeb.Schema.Types do
   import_types(Types.CustomerType)
   import_types(Types.EmployeeType)
   import_types(Types.CustomerSessionType)
+  import_types(Types.EmployeeSessionType)
 end
