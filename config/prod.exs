@@ -12,7 +12,7 @@ use Mix.Config
 config :webshop_graphql_api, WebshopGraphqlApiWeb.Endpoint,
   load_from_system_env: true,
   url: [scheme: "https", host: "webshop-graphql-api", port: 443],
-  http: [posrt: {:system, "PORT"}],
+  http: [port: {:system, "PORT"}],
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
   secret_key_base: Map.fetch!(System.get_env(), "SECRET_KEY_BASE")
 
