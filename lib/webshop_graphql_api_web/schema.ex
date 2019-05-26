@@ -29,5 +29,11 @@ defmodule WebshopGraphqlApiWeb.Schema do
       arg(:input, non_null(:employee_input_type))
       resolve(&Resolvers.EmployeeResolver.create_employee/3)
     end
+
+    @desc "Login a customer"
+    field :create_customer_session, :customer_session_type do
+      arg(:input, non_null(:customer_session_input_type))
+      resolve(&Resolvers.SessionResolver.create_customer_session/3)
+    end
   end
 end
