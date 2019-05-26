@@ -3,7 +3,7 @@ use Mix.Config
 # Configure your database
 config :webshop_graphql_api, WebshopGraphqlApi.Repo,
   username: "postgres",
-  password: "postgres",
+  password: "",
   database: "webshop_graphql_api_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
@@ -16,7 +16,3 @@ config :webshop_graphql_api, WebshopGraphqlApiWeb.Endpoint,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
-
-config :argon2_elixir,
-  t_cost: 1,
-  m_cost: 8
