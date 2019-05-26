@@ -21,6 +21,10 @@ config :webshop_graphql_api, WebshopGraphqlApi.Repo,
   ssl: true,
   url: System.get_env("DATABASE_URL")
 
+config :webshop_graphql_api, WebshopGraphqlApi.Guardian,
+  issuer: "webshop_graphql_api",
+  secret_key: System.get_env("GUARDIAN_SECRET")
+
 # Do not print debug messages in production
 config :logger, level: :info
 
