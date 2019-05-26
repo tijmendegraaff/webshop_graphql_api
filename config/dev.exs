@@ -22,6 +22,10 @@ config :webshop_graphql_api, WebshopGraphqlApiWeb.Endpoint,
   check_origin: false,
   watchers: []
 
+config :webshop_graphql_api, WebshopGraphqlApi.Guardian,
+  issuer: "webshop_graphql_api",
+  secret_key: "9rz8YRrhsqndkexMLUe32HbB8ajS7b2tIpLsTVFy7sBMbCUk3Px4bZrd4rDKJ2o+"
+
 # ## SSL Support
 #
 # In order to use HTTPS in development, a self-signed
