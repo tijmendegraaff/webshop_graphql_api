@@ -3,7 +3,7 @@ defmodule WebshopGraphqlApi.Accounts.Employee do
   import Ecto.Changeset
 
   alias WebshopGraphqlApi.Validators.EmailValidator
-  alias WebshopGraphqlApi.Utils.HashPassword
+  alias WebshopGraphqlApi.Utils.Password
 
   schema "employees" do
     field :email, :string
@@ -43,6 +43,6 @@ defmodule WebshopGraphqlApi.Accounts.Employee do
     |> validate_length(:password, min: 6, max: 100)
     |> validate_confirmation(:password, message: "passwords don't match")
     |> unique_constraint(:email)
-    |> HashPassword.hash_password()
+    |> Password.hash_password()
   end
 end
