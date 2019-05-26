@@ -18,5 +18,11 @@ defmodule WebshopGraphqlApiWeb.Schema do
       arg(:input, non_null(:customer_input_type))
       resolve(&Resolvers.CustomerResolver.create_customer/3)
     end
+
+    @desc "Create a new employee"
+    field :create_employee, :employee_type do
+      arg(:input, non_null(:employee_input_type))
+      resolve(&Resolvers.EmployeeResolver.create_employee/3)
+    end
   end
 end
