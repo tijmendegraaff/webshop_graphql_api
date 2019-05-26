@@ -3,6 +3,7 @@ defmodule WebshopGraphqlApiWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug WebshopGraphqlApiWeb.Plugs.Context
   end
 
   scope "/api" do

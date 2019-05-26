@@ -17,13 +17,19 @@ defmodule WebshopGraphqlApi.Guardian do
   end
 
   def resource_from_claims(%{"sub" => user}) do
-    case user.role do
+    case Map.get(user, "role") do
       "customer" ->
-        resource = Accounts.get_customer!(user.id)
+        resource =
+          Map.get(user, "id")
+          |> Accounts.get_customer!()
+
         {:ok, resource}
 
       "employee" ->
-        resource = Accounts.get_employee!(user.id)
+        resource =
+          Map.get(user, "id")
+          |> Accounts.get_employee!()
+
         {:ok, resource}
     end
   end
