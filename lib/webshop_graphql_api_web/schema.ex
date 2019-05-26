@@ -2,8 +2,15 @@ defmodule WebshopGraphqlApiWeb.Schema do
   use Absinthe.Schema
 
   alias WebshopGraphqlApiWeb.Resolvers
+  alias WebshopGraphqlApiWeb.Schema.Middleware
 
   import_types(WebshopGraphqlApiWeb.Schema.Types)
+
+  def middleware(middleware, _field, %{identifier: :mutation}) do
+    middleware ++ [Middleware.ChangesetErrors]
+  end
+
+  def middleware(middleware, _field, _object), do: middleware
 
   query do
     @desc "Return all customers"
