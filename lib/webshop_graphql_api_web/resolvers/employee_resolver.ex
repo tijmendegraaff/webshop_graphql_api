@@ -3,7 +3,7 @@ defmodule WebshopGraphqlApiWeb.Resolvers.EmployeeResolver do
   alias WebshopGraphqlApi.Accounts.Session
   alias WebshopGraphqlApi.Guardian
 
-  def employees(_, _, %{context: %{user: user}}) do
+  def employees(_, _, _) do
     {:ok, Accounts.list_employees()}
   end
 
