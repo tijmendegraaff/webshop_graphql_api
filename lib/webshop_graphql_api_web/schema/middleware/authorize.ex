@@ -15,7 +15,9 @@ defmodule WebshopGraphqlApiWeb.Schema.Middleware.Authorize do
   defp correct_role?(%{}, :any), do: true
 
   defp correct_role?(%{role: role}, given_role) do
-    case role == given_role || role == "admin" do
+    role = String.to_atom(role)
+
+    case role == given_role || role == :admin do
       true -> true
       _ -> false
     end
