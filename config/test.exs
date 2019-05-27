@@ -17,6 +17,10 @@ config :webshop_graphql_api, WebshopGraphqlApiWeb.Endpoint,
 # Print only warnings and errors during test
 config :logger, level: :warn
 
+config :webshop_graphql_api, WebshopGraphqlApi.Guardian,
+  issuer: "webshop_graphql_api",
+  secret_key: "9rz8YRrhsqndkexMLUe32HbB8ajS7b2tIpLsTVFy7sBMbCUk3Px4bZrd4rDKJ2o+"
+
 config :argon2_elixir,
   t_cost: 1,
   m_cost: 8
