@@ -47,7 +47,8 @@ defmodule WebshopGraphqlApi.MixProject do
       {:absinthe_phoenix, "~> 1.4"},
       {:comeonin, "~> 5.1"},
       {:argon2_elixir, "~> 2.0"},
-      {:guardian, "~> 1.2"}
+      {:guardian, "~> 1.2"},
+      {:ex_machina, "~> 2.3", only: :test}
     ]
   end
 
