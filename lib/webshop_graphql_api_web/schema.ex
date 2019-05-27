@@ -15,6 +15,7 @@ defmodule WebshopGraphqlApiWeb.Schema do
   query do
     @desc "Return all customers"
     field :customers, list_of(:customer_type) do
+      middleware(Middleware.Authorize, :intern)
       resolve(&Resolvers.CustomerResolver.customers/3)
     end
 
