@@ -20,6 +20,7 @@ defmodule WebshopGraphqlApiWeb.Schema do
 
     @desc "Return all employees"
     field :employees, list_of(:employee_type) do
+      middleware(Middleware.Authorize, :any)
       resolve(&Resolvers.EmployeeResolver.employees/3)
     end
   end
