@@ -14,5 +14,9 @@ config :webshop_graphql_api, WebshopGraphqlApiWeb.Endpoint,
   http: [port: 4002],
   server: false
 
+config :webshop_graphql_api, WebshopGraphqlApi.Guardian,
+  issuer: "webshop_graphql_api",
+  secret_key: "9rz8YRrhsqndkexMLUe32HbB8ajS7b2tIpLsTVFy7sBMbCUk3Px4bZrd4rDKJ2o+"
+
 # Print only warnings and errors during test
 config :logger, level: :warn
