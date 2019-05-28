@@ -4,6 +4,7 @@ defmodule WebshopGraphqlApi.Accounts.Customer do
 
   alias WebshopGraphqlApi.Validators.EmailValidator
   alias WebshopGraphqlApi.Utils.Password
+  alias WebshopGraphqlApi.Accounts
 
   schema "customers" do
     field :email, :string
@@ -13,6 +14,8 @@ defmodule WebshopGraphqlApi.Accounts.Customer do
     field :password_confirmation, :string, virtual: true
     field :password_hash, :string
     field :phone_number, :string
+
+    has_many :addresses, Accounts.Address
 
     timestamps()
   end
