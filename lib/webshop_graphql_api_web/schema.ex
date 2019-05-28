@@ -36,6 +36,7 @@ defmodule WebshopGraphqlApiWeb.Schema do
     @desc "Create a new employee"
     field :create_employee, :employee_type do
       arg(:input, non_null(:employee_input_type))
+      middleware(Middleware.Authorize, :admin)
       resolve(&Resolvers.EmployeeResolver.create_employee/3)
     end
 
@@ -49,6 +50,13 @@ defmodule WebshopGraphqlApiWeb.Schema do
     field :create_employee_session, :employee_session_type do
       arg(:input, non_null(:employee_session_input_type))
       resolve(&Resolvers.EmployeeResolver.create_employee_session/3)
+    end
+
+    @desc "Add an adress for a customer"
+    field :create_customer_address, :customer_address_type do
+      arg(:input, non_null(:customer_address_input_type))
+      middleware(Middleware.Authorize, :any)
+      resolve(&Resolvers.CustomerResolver.create_customer_address/3)
     end
   end
 end

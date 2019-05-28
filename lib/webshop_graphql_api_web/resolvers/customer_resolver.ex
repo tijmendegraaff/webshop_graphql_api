@@ -17,4 +17,9 @@ defmodule WebshopGraphqlApiWeb.Resolvers.CustomerResolver do
       {:ok, %{customer: customer, token: jwt}}
     end
   end
+
+  def create_customer_address(_, %{input: input}, %{context: %{user: user}}) do
+    args = Map.merge(input, %{customer_id: user.id})
+    Accounts.create_address(args)
+  end
 end

@@ -6,7 +6,7 @@ defmodule WebshopGraphqlApi.Accounts do
   import Ecto.Query, warn: false
   alias WebshopGraphqlApi.Repo
 
-  alias WebshopGraphqlApi.Accounts.Customer
+  alias WebshopGraphqlApi.Accounts.{Customer, Address, Employee}
 
   @doc """
   Returns the list of customers.
@@ -102,8 +102,6 @@ defmodule WebshopGraphqlApi.Accounts do
     Customer.changeset(customer, %{})
   end
 
-  alias WebshopGraphqlApi.Accounts.Employee
-
   @doc """
   Returns the list of employees.
 
@@ -196,5 +194,11 @@ defmodule WebshopGraphqlApi.Accounts do
   """
   def change_employee(%Employee{} = employee) do
     Employee.changeset(employee, %{})
+  end
+
+  def create_address(attrs \\ %{}) do
+    %Address{}
+    |> Address.changeset(attrs)
+    |> Repo.insert()
   end
 end
