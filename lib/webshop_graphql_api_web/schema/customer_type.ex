@@ -8,6 +8,7 @@ defmodule WebshopGraphqlApiWeb.Schema.Types.CustomerType do
     field(:last_name, :string)
     field(:email, :string)
     field(:phone_number, :string)
+    field :addresses, list_of(:customer_address_type), resolve: assoc(:addresses)
   end
 
   input_object :customer_input_type do
