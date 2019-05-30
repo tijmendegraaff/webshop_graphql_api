@@ -63,7 +63,7 @@ admin_tijmen =
     phone_number: "06544455511",
     password: "password12345",
     password_confirmation: "password12345",
-    role: "ADMIN"
+    role: "admin"
   })
   |> Repo.insert!()
 
