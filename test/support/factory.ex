@@ -7,6 +7,7 @@ defmodule WebshopGraphqlApi.Factory do
       first_name: "Jane",
       last_name: "Smith",
       email: sequence(:email, &"email-#{&1}@example.com"),
+      phone_number: "88844455566",
       password: "secret1234",
       password_confirmation: "secret1234",
       password_hash: Argon2.hash_pwd_salt("secret1234"),
