@@ -6,7 +6,7 @@ defmodule WebshopGraphqlApi.Repo.Migrations.CreateCustomers do
       add :first_name, :string, null: false
       add :last_name, :string, null: false
       add :email, :string, null: false
-      add :phone_number, :string, null: false
+      add :phone_number, :string
       add :password_hash, :string, null: false
 
       timestamps()

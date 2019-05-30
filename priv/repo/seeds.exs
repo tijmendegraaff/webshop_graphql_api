@@ -22,6 +22,7 @@ tijmen =
     first_name: "Tijmen",
     last_name: "de Graaff",
     email: "tijmen@example.com",
+    phone_number: "06544455511",
     password: "password12345",
     password_confirmation: "password12345"
   })
@@ -48,3 +49,34 @@ floortje =
     password_confirmation: "password12345"
   })
   |> Repo.insert!()
+
+#
+# EMPLOYEES
+#
+
+admin_tijmen =
+  %Employee{}
+  |> Employee.changeset(%{
+    first_name: "Tijmen",
+    last_name: "de Graaff",
+    email: "tijmen@tijmen.com",
+    phone_number: "06544455511",
+    password: "password12345",
+    password_confirmation: "password12345",
+    role: "ADMIN"
+  })
+  |> Repo.insert!()
+
+#
+# CUSTOMER ADDRESS
+#
+
+%Address{
+  street_name: "SomeStreet",
+  house_number: "199-2",
+  zip_code: "1088LP",
+  city: "Amsterdam",
+  default: true,
+  customer: tijmen
+}
+|> Repo.insert!()
