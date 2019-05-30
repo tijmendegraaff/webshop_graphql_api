@@ -3,14 +3,16 @@ defmodule WebshopGraphqlApi.Repo.Migrations.CreateAddresses do
 
   def change do
     create table(:adresses) do
-      add :street_name, :string
-      add :house_number, :string
-      add :zip_code, :string
-      add :city, :string
-      add :default, :boolean
-      add :customer_id, references(:customers)
+      add :street_name, :string, null: false
+      add :house_number, :string, null: false
+      add :zip_code, :string, null: false
+      add :city, :string, null: false
+      add :default, :boolean, null: false
+      add :customer_id, references(:customers), null: false
 
       timestamps()
     end
+
+    create index(:adresses, [:customer_id])
   end
 end

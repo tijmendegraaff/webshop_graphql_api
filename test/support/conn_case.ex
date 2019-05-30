@@ -15,6 +15,8 @@ defmodule WebshopGraphqlApiWeb.ConnCase do
 
   use ExUnit.CaseTemplate
 
+  alias WebshopGraphqlApi.Guardian
+
   using do
     quote do
       # Import conveniences for testing with connections
@@ -23,6 +25,11 @@ defmodule WebshopGraphqlApiWeb.ConnCase do
 
       # The default endpoint for testing
       @endpoint WebshopGraphqlApiWeb.Endpoint
+
+      defp auth_user(conn, user) do
+        {:ok, token, _} = Guardian.encode_and_sign(user)
+        put_req_header(conn, "authorization", "Bearer #{token}")
+      end
     end
   end
 
