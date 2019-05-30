@@ -1,4 +1,4 @@
-defmodule WebshopGraphqlApiWeb.Schema.Mutation.CreateEmployeeTest do
+defmodule WebshopGraphqlApiWeb.Schema.Mutation.CreateCustomerTest do
   use WebshopGraphqlApiWeb.ConnCase, async: true
 
   import WebshopGraphqlApi.Factory
