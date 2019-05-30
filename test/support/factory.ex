@@ -11,8 +11,12 @@ defmodule WebshopGraphqlApi.Factory do
       password: "secret1234",
       password_confirmation: "secret1234",
       password_hash: Argon2.hash_pwd_salt("secret1234"),
-      role: sequence(:role, ["admin", "intern"])
+      role: "intern"
     }
+  end
+
+  def make_admin(employee) do
+    %{employee | role: "admin"}
   end
 
   def customer_factory do
