@@ -3,12 +3,12 @@ defmodule WebshopGraphqlApi.Repo.Migrations.CreateEmployees do
 
   def change do
     create table(:employees) do
-      add :first_name, :string
-      add :last_name, :string
-      add :email, :string
-      add :phone_number, :string
-      add :password_hash, :string
-      add :role, :string
+      add :first_name, :string, null: false
+      add :last_name, :string, null: false
+      add :email, :string, null: false
+      add :phone_number, :string, null: false
+      add :password_hash, :string, null: false
+      add :role, :string, null: false
 
       timestamps()
     end
