@@ -1,6 +1,5 @@
 defmodule WebshopGraphqlApiWeb.Schema.Types.CustomerType do
   use Absinthe.Schema.Notation
-  use Absinthe.Ecto, repo: WebshopGraphqlApi.Repo
   import Absinthe.Resolution.Helpers, only: [dataloader: 1, dataloader: 3]
 
   alias WebshopGraphqlApi.Accounts
