@@ -1,6 +1,8 @@
 defmodule WebshopGraphqlApiWeb.Schema.Types.CustomerAddressType do
   use Absinthe.Schema.Notation
-  use Absinthe.Ecto, repo: WebshopGraphqlApi.Repo
+  import Absinthe.Resolution.Helpers, only: [dataloader: 1, dataloader: 3]
+
+  alias WebshopGraphqlApi.Accounts
 
   object :customer_address_type do
     field(:street_name, :string)
@@ -8,7 +10,7 @@ defmodule WebshopGraphqlApiWeb.Schema.Types.CustomerAddressType do
     field(:zip_code, :string)
     field(:city, :string)
     field(:default, :boolean)
-    field :customer, :customer_type, resolve: assoc(:customer)
+    field :customer, :customer_type, resolve: dataloader(Accounts)
   end
 
   input_object :customer_address_input_type do

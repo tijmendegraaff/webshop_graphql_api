@@ -1,6 +1,7 @@
 defmodule WebshopGraphqlApiWeb.Schema do
   use Absinthe.Schema
 
+  alias WebshopGraphqlApi.{Repo, Accounts}
   alias WebshopGraphqlApiWeb.Resolvers
   alias WebshopGraphqlApiWeb.Schema.Middleware
 
@@ -11,6 +12,27 @@ defmodule WebshopGraphqlApiWeb.Schema do
   end
 
   def middleware(middleware, _field, _object), do: middleware
+
+  #
+  # Add dataloader to middleware
+  #
+  def context(ctx) do
+    source = Dataloader.Ecto.new(Repo)
+
+    loader =
+      Dataloader.new()
+      |> Dataloader.add_source(Accounts, source)
+
+    Map.put(ctx, :loader, loader)
+  end
+
+  def plugins do
+    [Absinthe.Middleware.Dataloader] ++ Absinthe.Plugin.defaults()
+  end
+
+  #
+  #
+  #
 
   query do
     @desc "Return all customers"

@@ -1,6 +1,5 @@
 defmodule WebshopGraphqlApiWeb.Schema.Types.EmployeeType do
   use Absinthe.Schema.Notation
-  use Absinthe.Ecto, repo: WebshopGraphqlApi.Repo
 
   object :employee_type do
     field(:id, :id)
