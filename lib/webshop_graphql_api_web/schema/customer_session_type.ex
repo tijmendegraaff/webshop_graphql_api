@@ -1,6 +1,5 @@
 defmodule WebshopGraphqlApiWeb.Schema.Types.CustomerSessionType do
   use Absinthe.Schema.Notation
-  use Absinthe.Ecto, repo: WebshopGraphqlApi.Repo
 
   object :customer_session_type do
     field(:token, :string)
