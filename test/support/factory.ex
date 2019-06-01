@@ -1,6 +1,6 @@
 defmodule WebshopGraphqlApi.Factory do
   use ExMachina.Ecto, repo: WebshopGraphqlApi.Repo
-  alias WebshopGraphqlApi.Accounts.{Employee, Customer}
+  alias WebshopGraphqlApi.Accounts.{Employee, Customer, Address}
 
   def employee_factory do
     %Employee{
@@ -27,6 +27,16 @@ defmodule WebshopGraphqlApi.Factory do
       password: "secret1234",
       password_confirmation: "secret1234",
       password_hash: Argon2.hash_pwd_salt("secret1234")
+    }
+  end
+
+  def customer_address_factory do
+    %Address{
+      street_name: "Somestreet",
+      house_number: "199-2",
+      zip_code: "1079AR",
+      city: "Amsterdam",
+      customer: build(:customer)
     }
   end
 end
